@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const search = require('youtube-search');
 const bot = new Discord.Client();
 
 const token = "NzIyNTYzODYzODg2NjkyNDgy.XwCqPw.We3JVMEupydCpfyHmeOGrWXu6T4";
@@ -26,15 +27,28 @@ bot.on('message', async msg=>{
             msg.channel.send("https://na.op.gg/summoner/userName=" + summonerName(extraArguments));
             break;
         case 'info' :
-            msg.channel.send("!op.gg Summoner Name to get a link to a user's op,gg.\n\n!lolches!ops Summoner Name to get a link to a user's lolchess.gg.\n\n!info to get a list of valid commands.");
+            msg.channel.send("!op.gg <Summoner Name> to get a link to a user's op.gg.\n\n!lolchess <Summoner Name> to get a link to a user's lolchess.gg.\n\n!changename <Desired Name> to change your nickname on the server.\n\n !youtube <Your Search> to return the first Youtube link.\n\n!info to get a list of valid commands.");
             break;
         case 'changename' :
-            console.log(msg.guild.me.hasPermission("MANAGE_NICKNAMES"));
-            console.log(msg.member);
-            // msg.member.setNickname(extraArguments);
-        //    console.log((await msg.guild.members.fetch()).get(bot.user.id).setNickname(extraArguments);
             (await msg.guild.members.fetch()).get(msg.author.id).setNickname(extraArguments)
-            
+            break;
+        case 'youtube' :
+            var opts = {
+                maxResults: 10,
+                key: 'AIzaSyCqnT5XsggoHB6UQTdlL5tmx9mwsoD83q4'
+              };
+               
+            search(extraArguments, opts, function(err, results) {
+            if(err) return console.log(err);
+            //console.log(results.reverse().pop().link);
+            var result = results[0].link.toString();
+            msg.channel.send(result);
+            });
+            break;
+        case 'summoner':
+            var interval = setTimeout(function(){
+                msg.channel.send("hi");
+            }, 5000);
             break;
         default:
             msg.channel.send(prefix + args +" is not a valid command. Type !info to get a list of my commands.");
