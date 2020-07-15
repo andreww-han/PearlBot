@@ -3,7 +3,7 @@ const search = require('youtube-search');
 const ytdl = require('ytdl-core');
 const bot = new Discord.Client();
 
-const token = "NzIyNTYzODYzODg2NjkyNDgy.XwCqPw.We3JVMEupydCpfyHmeOGrWXu6T4";
+const token; //Token omitted so that the bot cannot be changed by others.
 const prefix = "!";
 
 var servers = {};
