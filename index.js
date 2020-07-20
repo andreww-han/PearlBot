@@ -118,11 +118,6 @@ bot.on('message', async msg=>{
             if (msg.guild.connection) msg.guild.voice.connection.disconnect();
             break;
 
-        // case 'summoner':
-        //     var interval = setTimeout(function(){
-        //         msg.channel.send("hi");
-        //     }, 5000);
-        //     break;
         default:
             msg.channel.send(prefix + args +" is not a valid command. Type !info to get a list of my commands.");
     }           
