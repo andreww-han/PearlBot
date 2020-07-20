@@ -53,7 +53,7 @@ bot.on('message', async msg=>{
             var server = servers[msg.guild.id];
             var opts = {
                 maxResults: 1,
-                key: 'AIzaSyCqnT5XsggoHB6UQTdlL5tmx9mwsoD83q4'
+                key: //Youtube API key
               };
             if(extraArguments.startsWith("https://www.youtube.com/")){
                 server.queue.push(extraArguments);
