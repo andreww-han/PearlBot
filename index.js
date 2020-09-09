@@ -3,7 +3,7 @@ const search = require('youtube-search');
 const ytdl = require('ytdl-core');
 const bot = new Discord.Client();
 
-const token; //Token omitted so that the bot cannot be changed by others.
+const token = "" //Discord token goes here.
 const prefix = "!";
 
 var servers = {};
@@ -53,7 +53,7 @@ bot.on('message', async msg=>{
             var server = servers[msg.guild.id];
             var opts = {
                 maxResults: 1,
-                key: //Youtube API key
+                key: "" //Youtube key here
               };
             if(extraArguments.startsWith("https://www.youtube.com/")){
                 server.queue.push(extraArguments);
